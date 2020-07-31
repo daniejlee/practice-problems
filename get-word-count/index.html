@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Get Word Count</title>
+  </head>
+  <body>
+
+    <script>
+
+      function getWordCount(sentence){
+        var wordCount = 0;
+        for(var i = 0; i < sentence.length; i++){
+          if(sentence[i] === ' ' && i !== 0){
+            wordCount++;
+          }
+        }
+        if(sentence.length >= 1){
+          wordCount++;
+        }
+        return wordCount;
+      }
+
+      console.log(getWordCount("This is a sample sentence")) // -> 5
+      console.log(getWordCount("Han shot first")) // -> 3
+      console.log(getWordCount("I will not fear, fear is the mind killer")) // -> 9
+      console.log(getWordCount("")) // -> 0
+    </script>
+  </body>
+</html>
