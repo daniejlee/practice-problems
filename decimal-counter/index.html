@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Decimal Counter</title>
+  </head>
+  <body>
+    <script>
+      function decimalPlaceCounter(stringNumber){
+        var decimalCounter = 0;
+        for (var i = 0; i < stringNumber.length; i++){
+          if(stringNumber[i] === "."){
+            decimalCounter = ((stringNumber.length - i) -1);
+          }
+        }
+        return decimalCounter;
+      }
+
+      console.log(decimalPlaceCounter("127.245")) // -> 3
+      console.log(decimalPlaceCounter("145")) // -> 0
+      console.log(decimalPlaceCounter("23.00")) // -> 2
+    </script>
+  </body>
+</html>
