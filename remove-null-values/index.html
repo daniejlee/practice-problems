@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Remove Null Values</title>
+  </head>
+  <body>
+    <script>
+      function removeNullValues(array) {
+        var newArray = [];
+        var x = 0;
+        for (var i = 0; i < array.length; i++){
+          if (array[i] !== null){
+            newArray[x] = array[i];
+            x++;
+          }
+        }
+        return newArray;
+      }
+
+    </script>
+  </body>
+</html>
