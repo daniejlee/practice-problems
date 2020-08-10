@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Word Builder</title>
+  </head>
+  <body>
+    <script>
+      function wordBuilder(wordToSpell){
+        var newArr = [];
+        for(var i = 0; i < wordToSpell.length; i++){
+          if (i === 0){
+          newArr.push(wordToSpell[i])
+          }
+          else{
+            newArr.push(newArr[i - 1] + wordToSpell[i])
+          }
+        }
+        return newArr;
+      }
+
+      console.log(wordBuilder("JavaScript")) // -> ["J", "Ja", "Jav", "Java", "JavaS", "JavaSc", "JavaScr", "JavaScri", "JavaScrip", "JavaScript"]
+      console.log(wordBuilder("Moon")) // -> ["M", "Mo", "Moo", "Moon"]
+      console.log(wordBuilder("Stars")) // -> ["S", "St", "Sta", "Star", "Stars"]
+    </script>
+  </body>
+</html>
