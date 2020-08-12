@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Odd Up Even Down</title>
+  </head>
+  <body>
+    <script>
+      function oddUpEvenDown(array){
+        var newArr = [];
+        for (var i = 0; i < array.length; i++){
+          if (array[i] % 2 === 0){
+            newArr.push(array[i] - 1)
+          }
+          else {
+            newArr.push(array[i] + 1)
+          }
+        }
+        return newArr;
+      }
+    </script>
+  </body>
+</html>
