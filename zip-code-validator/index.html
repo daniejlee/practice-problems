@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zip Code Validator</title>
+  </head>
+  <body>
+    <script>
+      function zipCodeValidator(zipToValidate){
+        var checkString =  Number(zipToValidate);
+        return (zipToValidate.length <= 5 && !Number.isNaN(checkString))
+      }
+    </script>
+  </body>
+</html>
