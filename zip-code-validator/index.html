@@ -7,12 +7,7 @@
     <script>
       function zipCodeValidator(zipToValidate){
         var checkString =  Number(zipToValidate);
-        if(zipToValidate.length <= 5 && !Number.isNaN(checkString)){
-          return true
-        }
-        else {
-          return false;
-        }
+        return (zipToValidate.length <= 5 && !Number.isNaN(checkString))
       }
     </script>
   </body>
