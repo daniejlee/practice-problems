@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Payscale Analyzer</title>
+  </head>
+  <body>
+    <script>
+      function payscaleAnalyzer(payList) {
+        let diff = 0;
+        let high = 0;
+        let low = payList[0]
+        for (let i = 0; i < payList.length; i++){
+          if(payList[i] > high){
+            high = payList[i]
+          }
+          if(payList[i] < low){
+            low = payList[i]
+          }
+        }
+        diff = high-low;
+        return diff
+      }
+    </script>
+  </body>
+</html>
