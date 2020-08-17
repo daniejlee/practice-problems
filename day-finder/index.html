@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Day Finder</title>
+  </head>
+  <body>
+    <script>
+      function dayFinder(stringDate){
+        const day = new Date(stringDate)
+        const weekdays = [
+          "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+        ];
+        return weekdays[day.getDay()]
+      }
+    </script>
+  </body>
+</html>
