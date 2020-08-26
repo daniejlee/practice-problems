@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account Number Protector</title>
+</head>
+
+<body>
+  <script>
+    function accountNumberProtector(cardNumberString){
+      let lastFourDigits = ""
+      if(cardNumberString.length === 16){
+        for(let i = 12; i < cardNumberString.length; i++){
+          lastFourDigits += cardNumberString[i]
+        }
+      }
+      else {
+        console.log("Invalid number")
+      }
+      return "**" + lastFourDigits;
+    }
+  </script>
+</body>
+
+</html>
