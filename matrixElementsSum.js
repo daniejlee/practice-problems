@@ -1,33 +1,22 @@
-function almostIncreasingSequence(sequence) {
-  if (sequence.length <= 2) {
-    return true
-  }
-  if (sequence[0] > sequence[1]) {
-    sequence.splice(0, 1)
-    for (let i = 0; i < sequence.length; i++) {
-      if (sequence[i] <= sequence[i - 1]) {
-        return false
-      }
-    }
-    return true;
-  }
+function matrixElementsSum(matrix) {
+  let sum = 0;
+  let hauntedColumns = [];
+  for(let i = 0; i < matrix.length; i++){
 
-  for (let i = 0; i < sequence.length; i++) {
-    if (sequence[i] <= sequence[i - 1]) {
-      console.log(sequence[i - 2])
-      if (sequence[i] <= sequence[i - 2]) {
-        sequence.splice(i, 1)
+    for(let j = 0; j < matrix[i].length; j++){
+      if(hauntedColumns.includes(j)){
+        continue;
       }
-      else if (sequence[i] > sequence[i - 2]) {
-        sequence.splice(i - 1, 1)
-      }
-      for (let j = 0; j < sequence.length; j++) {
-        if (sequence[j] <= sequence[j - 1]) {
-          return false
+
+      if(matrix[i][j] === 0){
+        if(!hauntedColumns.includes(j)){
+          hauntedColumns.push(j)
         }
       }
-      return true;
+      else{
+        sum += matrix[i][j]
+      }
     }
   }
-  return true;
+  return sum;
 }
