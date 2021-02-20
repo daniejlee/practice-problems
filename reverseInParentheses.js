@@ -3,20 +3,40 @@ function reverseInParentheses(inputString) {
   let parenthesesFound = false;
   let nested = 0;
 
-  let reverseWord = '';
+  let nestedWord = '';
   let finalWord = '';
-  for(let i = 0; i < inputString.length; i++){
+  let reverseWord = '';
 
+  for(let i = 0; i < inputString.length; i++){
 
     if(parenthesesFound){
 
-      if (inputString[i] === ")"){
-        finalWord += reverseWord;
-        parenthesesFound = false;
-        reverseWord = '';
+      if (nested === 0){
+        if (inputString[i] === ")"){
+          finalWord += reverseWord;
+          parenthesesFound = false;
+          reverseWord = '';
+        }
+        else if (inputString[i] !== ")" && inputString[i] !== "("){
+          reverseWord = inputString[i] + reverseWord
+          // console.log(reverseWord)
+        }
+        else if (inputString[i] === '('){
+          nested++;
+        }
       }
-      else if (parenthesesFound && inputString[i] !== ")"){
-        reverseWord = inputString[i] + reverseWord
+
+      else if(nested > 0){
+        if (inputString[i] === ')'){
+          nested--
+          reverseWord = nestedWord + reverseWord
+          nestedWord = ''
+        }
+        else if(nested > 0){
+          nestedWord += inputString[i]
+        }
+        // console.log(nested)
+        // console.log('nestedword: ', nestedWord)
       }
 
     }
@@ -28,57 +48,10 @@ function reverseInParentheses(inputString) {
       }
       else{
         finalWord += inputString[i]
-        console.log(finalWord)
+        //console.log(finalWord)
       }
     }
   }
 
   return finalWord
 }
-
-
-
-
-
-// let reverse = (word) => {
-
-
-//   if( '(' is found)
-//   reverse()
-// }
-
-
-
-
-// // "foo(barbar(bazn(as(sfg)add)ar))blim"
-
-
-
-// function reverseInParentheses(inputString) {
-//   let wordInParentheses
-//   let parenthesesFound = false;
-//   let nested = 0;
-
-//   let reverseWord = '';
-//   let finalWord = '';
-//   for (let i = 0; i < inputString.length; i++) {
-
-//     if (inputString[i] === '(') {
-//       parenthesesFound = true;
-//     }
-//     else if (parenthesesFound && inputString[i] !== ")") {
-//       reverseWord = inputString[i] + reverseWord
-//     }
-//     else if (inputString[i] === ")") {
-//       finalWord += reverseWord;
-//       parenthesesFound = false;
-//       reverseWord = '';
-//     }
-//     else {
-//       finalWord += inputString[i]
-//       console.log(finalWord)
-//     }
-//   }
-
-//   return finalWord
-// }
