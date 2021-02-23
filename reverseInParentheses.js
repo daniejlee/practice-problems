@@ -19,7 +19,6 @@ function reverseInParentheses(inputString) {
         }
         else if (inputString[i] !== ")" && inputString[i] !== "("){
           reverseWord = inputString[i] + reverseWord
-          // console.log(reverseWord)
         }
         else if (inputString[i] === '('){
           nested++;
@@ -35,8 +34,6 @@ function reverseInParentheses(inputString) {
         else if(nested > 0){
           nestedWord += inputString[i]
         }
-        // console.log(nested)
-        // console.log('nestedword: ', nestedWord)
       }
 
     }
@@ -48,7 +45,6 @@ function reverseInParentheses(inputString) {
       }
       else{
         finalWord += inputString[i]
-        //console.log(finalWord)
       }
     }
   }
