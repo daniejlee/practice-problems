@@ -1,15 +1,16 @@
-function allLongestStrings(inputArray) {
-  let maxLength = inputArray[0].length;
-  let newArr = []
-  for(let i = 0; i < inputArray.length; i++){
-    if (inputArray[i].length > maxLength){
-      maxLength = inputArray[i].length
-    }
+function addBorder(picture) {
+  let borderLength = picture[0].length + 2;
+  let borders = '';
+  for(let i = 0; i < borderLength; i++){
+    borders += "*"
   }
-  for(let i = 0; i < inputArray.length; i++){
-    if(inputArray[i].length === maxLength){
-      newArr.push(inputArray[i])
-    }
+
+  for(let i = 0; i < picture.length; i++){
+    picture[i] = '*' + picture[i] + '*'
   }
-  return newArr
+
+
+  picture.unshift(borders)
+  picture.push(borders)
+  return picture
 }
