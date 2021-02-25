@@ -23,6 +23,9 @@ function areSimilar(a, b) {
     if(a[m1] === b[m2] && a[m2] === b[m1]){
       return true;
     }
+    else{
+      return false;
+    }
   }
 
 }
