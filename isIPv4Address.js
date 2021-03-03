@@ -1,13 +1,30 @@
-function arrayMaximalAdjacentDifference(inputArray) {
-  let max = 0;
-  for(let i = 0; i < inputArray.length; i++){
-    let current = Math.abs(inputArray[i] - inputArray[i + 1])
-    if(current > max){
-      max = current
+function isIPv4Address(inputString) {
+  let periodCount = 0;
+  let subNum = '';
+  for(let i = 0; i < inputString.length; i++){
+    if(inputString[i] === '.'){
+      if(!checkValid(subNum)){
+        return false
+      }
+      subNum = '';
+      periodCount++
     }
-    // max = (current > max)
-    // ? current
-    // : max;
+    else {
+      subNum += inputString[i];
+    }
   }
-  return max
+  checkValid(subNum)
+  if(periodCount === 3){
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+let checkValid = (numString) => {
+  console.log(numString)
+  let toNum = parseInt(numString, 10)
+  console.log(toNum)
+  return toNum >= 0 && toNum <= 255
 }
