@@ -13,7 +13,9 @@ function isIPv4Address(inputString) {
       subNum += inputString[i];
     }
   }
-  checkValid(subNum)
+  if (!checkValid(subNum)) {
+    return false
+  }
   if(periodCount === 3){
     return true;
   }
@@ -23,8 +25,12 @@ function isIPv4Address(inputString) {
 }
 
 let checkValid = (numString) => {
-  console.log(numString)
+  if(isNaN(numString)){
+    return false
+  }
+  if(numString[0] === '0' && numString[1]){
+    return false
+  }
   let toNum = parseInt(numString, 10)
-  console.log(toNum)
   return toNum >= 0 && toNum <= 255
 }
