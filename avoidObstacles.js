@@ -11,17 +11,10 @@ function avoidObstacles(inputArray) {
           currentTest++
           break
         }
-
         if(i === inputArray.length - 1){
-          console.log(i)
           return currentTest
         }
       }
     }
   }
 }
-
-
-//check if currentTest is in the array;
-//if yes, go next loop iteration
-// if no, check if all multiples of currentTest are in the array
