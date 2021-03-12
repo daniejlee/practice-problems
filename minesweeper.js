@@ -7,22 +7,22 @@ function minesweeper(matrix) {
     //setting inner arrays in matrix
     return outer.map(inner => inner ? 1 : 0);
   })
-  console.log(matrix)
-  console.log(numberMatrix)
 
   //empty matrix
-  let newMatrix = Array(gridHeight).fill(Array(gridLength).fill(0))
+  let newMatrix = [];
+  for (let i = 0; i < gridHeight; i++) {
+    newMatrix.push(
+      Array(gridLength).fill(0)
+    )
+  }
+
 
   //let innerArray = [];
 
   for(let i = 0; i < gridHeight; i++){
 
     for(let j = 0; j < gridLength; j++){
-      console.log('i',i,'j',j)
-      console.log('minetest: ',numberMatrix[i][j])
-
       if(numberMatrix[i][j] === 1){
-        console.log('before loop:', newMatrix)
         //top row
         if(i > 0){
           if (j > 0){
@@ -52,13 +52,9 @@ function minesweeper(matrix) {
             newMatrix[i + 1][j + 1]++
           }
         }
-
-        console.log('after 1 loop: ', newMatrix)
-
       }
     }
   }
-  console.log('final', newMatrix)
   return newMatrix
 }
 
