@@ -1,27 +1,84 @@
 function minesweeper(matrix) {
   let gridLength = matrix[0].length
   let gridHeight = matrix.length
-  console.log(gridLength)
-  console.log(gridHeight)
-  let newMatrix = [];
-  let innerArray = [];
 
+  //convert boolean to 0 and 1
+  let numberMatrix =  matrix.map((outer)=>{
+    //setting inner arrays in matrix
+    return outer.map(inner => inner ? 1 : 0);
+  })
+  console.log(matrix)
+  console.log(numberMatrix)
+
+  //empty matrix
+  let newMatrix = Array(gridHeight).fill(Array(gridLength).fill(0))
+
+  //let innerArray = [];
 
   for(let i = 0; i < gridHeight; i++){
 
     for(let j = 0; j < gridLength; j++){
-     let singleBox = 0;
+      console.log('i',i,'j',j)
+      console.log('minetest: ',numberMatrix[i][j])
+
+      if(numberMatrix[i][j] === 1){
+        console.log('before loop:', newMatrix)
+        //top row
+        if(i > 0){
+          if (j > 0){
+            newMatrix[i - 1][j - 1]++
+          }
+          newMatrix[i - 1][j]++
+          if (j < gridLength - 1) {
+            newMatrix[i - 1][j + 1]++
+          }
+        }
+
+        //middle row
+        if (j > 0) {
+          newMatrix[i][j - 1]++
+        }
+        if (j < gridLength - 1) {
+          newMatrix[i][j + 1]++
+        }
+
+        //bottom row
+        if(i < gridHeight - 1){
+          if (j > 0) {
+            newMatrix[i + 1][j - 1]++
+          }
+          newMatrix[i + 1][j]++
+          if(j < gridLength - 1){
+            newMatrix[i + 1][j + 1]++
+          }
+        }
+
+        console.log('after 1 loop: ', newMatrix)
+
+      }
+    }
+  }
+  console.log('final', newMatrix)
+  return newMatrix
+}
+
+/*
+    let singleBox = 0;
 
      //
-      if (matrix[i - 1][j - 1] === true){
-       singleBox++
-     }
-     if(matrix[i-1][j] === true){
-       singleBox++
-     }
-     if(matrix[i-1][j+1] === true){
-       singleBox++
-     }
+     if(i !== 0){
+
+       if (matrix[i - 1][j - 1] === true){
+         singleBox++
+        }
+        if(matrix[i-1][j] === true){
+          singleBox++
+        }
+        if(matrix[i-1][j+1] === true){
+          singleBox++
+        }
+      }
+
      //
       if (matrix[i][j - 1] === true) {
         singleBox++
@@ -39,15 +96,9 @@ function minesweeper(matrix) {
       if (matrix[i + 1][j + 1] === true) {
         singleBox++
       }
+*/
 
-      innerArray.push(singleBox)
-      console.log(innerArray)
-    }
-    newMatrix.push(innerArray)
-    innerArray = [];
-  }
-  return newMatrix
-}
+
 
 
 
