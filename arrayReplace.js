@@ -6,3 +6,9 @@ function arrayReplace(inputArray, elemToReplace, substitutionElem) {
   }
   return inputArray
 }
+
+//using map
+function arrayReplace2(inputArray, elemToReplace, substitutionElem) {
+  let newArr = inputArray.map(x => x === elemToReplace ? substitutionElem : x)
+  return newArr
+}
