@@ -1,8 +1,8 @@
 function variableName(name) {
-  if(!name[0].match(/[a-z]/i)){
+  if(!name[0].match(/[a-z_]/i)){
     return false
   }
-  if(!name.match(/[1-9][a-z][_]/i)){
+  if(!name.match(/[1-9a-z_]/i)){
     return false;
   }
 
