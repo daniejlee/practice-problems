@@ -31,7 +31,14 @@ function isBeautifulString(inputString) {
     alphaCount[inputString[i]]++
   }
   let prevLetterCount = alphaCount.a;
-
+  for (const letter in alphaCount){
+    if (alphaCount[letter] > prevLetterCount){
+      return false;
+    }
+    else {
+      prevLetterCount = alphaCount[letter]
+    }
+  }
   return true;
 
 }
