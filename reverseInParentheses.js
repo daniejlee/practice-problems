@@ -1,53 +1,57 @@
 function reverseInParentheses(inputString) {
-  let wordInParentheses
-  let parenthesesFound = false;
-  let nested = 0;
+  let stringArray = inputString.split("")
+  console.log(stringArray)
+  let leftIndex, rightIndex;
+  let leftCount = 0;
 
-  let nestedWord = '';
-  let finalWord = '';
-  let reverseWord = '';
 
-  for(let i = 0; i < inputString.length; i++){
-
-    if(parenthesesFound){
-
-      if (nested === 0){
-        if (inputString[i] === ")"){
-          finalWord += reverseWord;
-          parenthesesFound = false;
-          reverseWord = '';
-        }
-        else if (inputString[i] !== ")" && inputString[i] !== "("){
-          reverseWord = inputString[i] + reverseWord
-        }
-        else if (inputString[i] === '('){
-          nested++;
-        }
+  console.log(stringArray.length)
+  for(let i = 0; i < stringArray.length; i++){
+    console.log(i)
+    if(stringArray[i] === '('){
+      if(leftCount === 0){
+        leftIndex = i;
+        leftCount++
       }
-
-      else if(nested > 0){
-        if (inputString[i] === ')'){
-          nested--
-          reverseWord = nestedWord + reverseWord
-          nestedWord = ''
-        }
-        else if(nested > 0){
-          nestedWord += inputString[i]
-        }
+      else if(leftCount > 0){
+        leftCount++
       }
-
     }
 
 
-    else if (!parenthesesFound){
-      if (inputString[i] === '(') {
-        parenthesesFound = true;
+    else if(stringArray[i] === ')'){
+      if(leftCount === 1){
+        rightIndex = i;
+        stringArray = reverseWords(leftIndex, rightIndex, stringArray)
+        console.log(stringArray)
+        i = 0;
+        leftCount = 0;
       }
-      else{
-        finalWord += inputString[i]
+      else {
+        leftCount--;
       }
     }
   }
 
-  return finalWord
+  return stringArray.join('')
 }
+
+
+let reverseWords = (left, right, word) => {
+  let wordInParenthesesReversed = word.slice(left + 1, right).reverse().map(x => {
+    if(x === ')'){
+      return '('
+    }
+    else if(x === '('){
+      return ')'
+    }
+    else return x
+  })
+  word.splice(left, (right - left + 1), ...wordInParenthesesReversed)
+  return word
+}
+
+
+
+
+// "foo(barbe(blam)ar)baz(blim)"
