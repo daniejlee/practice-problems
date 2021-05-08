@@ -7,7 +7,6 @@ function reverseInParentheses(inputString) {
 
   console.log(stringArray.length)
   for(let i = 0; i < stringArray.length; i++){
-    console.log(i)
     if(stringArray[i] === '('){
       if(leftCount === 0){
         leftIndex = i;
@@ -23,7 +22,6 @@ function reverseInParentheses(inputString) {
       if(leftCount === 1){
         rightIndex = i;
         stringArray = reverseWords(leftIndex, rightIndex, stringArray)
-        console.log(stringArray)
         i = 0;
         leftCount = 0;
       }
@@ -32,7 +30,6 @@ function reverseInParentheses(inputString) {
       }
     }
   }
-
   return stringArray.join('')
 }
 
@@ -50,8 +47,3 @@ let reverseWords = (left, right, word) => {
   word.splice(left, (right - left + 1), ...wordInParenthesesReversed)
   return word
 }
-
-
-
-
-// "foo(barbe(blam)ar)baz(blim)"
