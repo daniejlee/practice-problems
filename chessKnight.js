@@ -1,4 +1,4 @@
-function chessKnight(bishop, pawn) {
+function chessKnight(cell) {
   let alphaNum = {
     a: 1,
     b: 2,
@@ -9,53 +9,37 @@ function chessKnight(bishop, pawn) {
     g: 7,
     h: 8
   }
-let bishopPosition = [alphaNum[bishop[0]], parseInt(bishop[1], 10)];
-let pawnPosition = [alphaNum[pawn[0]], parseInt(pawn[1], 10)];
+  let movecount = 0;
+  let knightPosition = [alphaNum[cell[0]], parseInt(cell[1], 10)];
 
-
-  if(bishop[0] > pawn[0]){
-    if (pawn[1] > bishop[1]) {
-      for (let i = bishop[1]; i <= 8; i++) {
-        bishopPosition[0]--
-        bishopPosition[1]++
-        if (bishopPosition[0] === pawnPosition[0] && bishopPosition[1] === pawnPosition[1]) {
-          return true;
-        }
-      }
-    }
-    else if (pawn[1] < bishop[1]) {
-      for (let i = bishop[1]; i >= 0; i--) {
-        bishopPosition[0]--
-        bishopPosition[1]--
-        if (bishopPosition[0] === pawnPosition[0] && bishopPosition[1] === pawnPosition[1]) {
-          return true;
-        }
-      }
-    }
+//topright
+  if(knightPosition[0]+1 <= 8 && knightPosition[1]+2 <= 8){
+    movecount++
+  }
+  if(knightPosition[0]+2 <= 8 && knightPosition[1]+1 <= 8){
+    movecount++
+  }
+//bottomright
+  if(knightPosition[0]+2 <= 8 && knightPosition[1]-1 >= 1){
+    movecount++
+  }
+  if(knightPosition[0]+1 <= 8 && knightPosition[1]-2 >= 1){
+    movecount++
+  }
+//bottomleft
+  if(knightPosition[0]-1 >= 1 && knightPosition[1]-2 >= 1){
+    movecount++
+  }
+  if(knightPosition[0]-2 >= 1 && knightPosition[1]-1  >= 1){
+    movecount++
+  }
+//topleft
+  if(knightPosition[0]-2 >= 1 && knightPosition[1]+1 <= 8){
+    movecount++
+  }
+  if(knightPosition[0]-1 >= 1 && knightPosition[1]+2 <= 8){
+    movecount++
   }
 
-
-
-  else if(bishop[0] < pawn[0]){
-    if(pawn[1] > bishop[1]){
-      for(let i = bishop[1]; i <= 8; i++){
-        bishopPosition[0]++
-        bishopPosition[1]++
-        if(bishopPosition[0] === pawnPosition[0] && bishopPosition[1] === pawnPosition[1]){
-          return true;
-        }
-      }
-    }
-    else if (pawn[1] < bishop[1]) {
-      for (let i = bishop[1]; i >= 0; i--) {
-        bishopPosition[0]++
-        bishopPosition[1]--
-        if (bishopPosition[0] === pawnPosition[0] && bishopPosition[1] === pawnPosition[1]) {
-          return true;
-        }
-      }
-    }
-  }
-  return false;
-
+  return movecount
 }
