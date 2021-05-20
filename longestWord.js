@@ -1,49 +1,21 @@
-function reverseInParentheses(inputString) {
-  let stringArray = inputString.split("")
-  console.log(stringArray)
-  let leftIndex, rightIndex;
-  let leftCount = 0;
+function longestWord(text) {
+  let currentWord = '';
+  let longestWord = '';
 
-
-  console.log(stringArray.length)
-  for(let i = 0; i < stringArray.length; i++){
-    if(stringArray[i] === '('){
-      if(leftCount === 0){
-        leftIndex = i;
-        leftCount++
+  for(let i = 0; i < text.length; i++){
+    if (!(/[a-zA-Z]/).test(text[i])){
+      if(currentWord.length > longestWord.length){
+        longestWord = currentWord;
       }
-      else if(leftCount > 0){
-        leftCount++
-      }
+      currentWord = '';
     }
 
-
-    else if(stringArray[i] === ')'){
-      if(leftCount === 1){
-        rightIndex = i;
-        stringArray = reverseWords(leftIndex, rightIndex, stringArray)
-        i = 0;
-        leftCount = 0;
-      }
-      else {
-        leftCount--;
-      }
+    else{
+      currentWord += text[i];
     }
   }
-  return stringArray.join('')
-}
-
-
-let reverseWords = (left, right, word) => {
-  let wordInParenthesesReversed = word.slice(left + 1, right).reverse().map(x => {
-    if(x === ')'){
-      return '('
-    }
-    else if(x === '('){
-      return ')'
-    }
-    else return x
-  })
-  word.splice(left, (right - left + 1), ...wordInParenthesesReversed)
-  return word
+  if (currentWord.length > longestWord.length) {
+    longestWord = currentWord;
+  }
+  return longestWord;
 }
