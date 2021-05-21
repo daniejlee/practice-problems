@@ -6,11 +6,14 @@ function sumUpNumbers(inputString) {
       current += inputString[i];
     }
     else {
-      sum += parseInt(current, 10)
-      current = '';
-
+      if(current !== ''){
+        sum += parseInt(current, 10)
+        current = '';
+      }
     }
   }
-  sum += parseInt(current, 10)
+  if (current !== '') {
+    sum += parseInt(current, 10)
+  }
   return sum;
 }
