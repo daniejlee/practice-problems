@@ -1,26 +1,38 @@
-function commonCharacterCount(s1, s2) {
-  let s1Arr = s1.split("")
-  let s2Arr = s2.split("")
-  let commonCount = 0;
-  let common;
-  if(s1Arr.length > s2Arr.length){
-    for(let i = 0; i < s1Arr.length; i++){
-      common = s2Arr.indexOf(s1Arr[i])
-      if(common >= 0){
-        commonCount++
-        s2Arr.splice(common, 1)
-      }
-    }
-  }
-  else if(s1Arr.length <= s2Arr.length){
-    for (let i = 0; i < s2Arr.length; i++) {
-      common = s1Arr.indexOf(s2Arr[i])
-      if (common >= 0) {
-        commonCount++
-        s1Arr.splice(common, 1)
-      }
-    }
+function stringsRearrangement(inputArray) {
+  let currentCombo = [];
+  if (new Set(inputArray).size !== inputArray.length && inputArray[0].length === 1) {
+    return false;
   }
 
-  return commonCount
+  console.log('meets requirement?',checkOneCharDifference(inputArray))
+}
+
+function checkOneCharDifference (array) {
+  for(let i = 1; i < array.length; i++){
+    let compare = array[i];
+    for(let j = 0; j < array[i-1].length; j++){
+      compare = compare.replace(array[i-1][j], '');
+      // console.log('letter', array[i - 1][j])
+      // console.log('j', 'at', compare)
+    }
+    if(compare.length > 1){
+      return false;
+    }
+  }
+  return true
+}
+
+
+
+function checkOneCharDifference2(array) {
+  let array0 = array[0].split('')
+  let array1 = array[1].split('');
+  console.log(array0, array1)
+  array1 = array1.filter(val => {
+    return array0.indexOf(val.toString()) == -1;
+  })
+  console.log(array1)
+
+
+  return true
 }
