@@ -1,5 +1,5 @@
 function digitsProduct(product) {
-  for(let i = 1; i <= 10000; ++i){
+  for(let i = 1; i <= 10000; i++){
     if (findProduct(i) == product){
       return i
     }
@@ -8,10 +8,10 @@ function digitsProduct(product) {
 }
 
 function findProduct(n){
-  let p = 1;
-  while (n !== 0) {
-    p *= n % 10;
-    n /= 10;
+  let numString = n.toString();
+  let product = 1;
+  for(let i = 0; i < numString.length; i++){
+    product *= numString[i]
   }
-  return p
+  return product;
 }
