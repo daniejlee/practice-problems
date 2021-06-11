@@ -4,15 +4,20 @@
  */
 var plusOne = function (digits) {
   let str = digits.join('')
+
+  if (digits.every(element => element == '9')){
+    let arr = digits.map(x => x = 0)
+    arr.unshift('1');
+    return arr;
+  }
+
   if(str.length > 16){
     let arr = str.match(/.{1,16}/g);
     console.log(arr)
     let i = arr.length - 1;
-    // if (arr[i].every(element => element == '9')){
-    if (arr.every(element => element == '9')){
-      // to do
-    }
-    else {
+    console.log(arr.every(element => element == '9'))
+    console.log(arr)
+
       let leadingZero = false;
       let zeroCount;
       if(arr[i].startsWith('0')){
@@ -25,11 +30,17 @@ var plusOne = function (digits) {
         arr[i] = zeroCount + arr[i]
       }
       return arr.join('').split('');
-    }
   }
   else {
     return (parseInt(str, 10) + 1).toString().split('')
   }
 };
 
-// [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
+const checkForNines = str => {
+  for(let i = 0; i < str.length; i++){
+    if(str[i] !== '9'){
+      return false;
+    }
+  }
+  return true;
+}
