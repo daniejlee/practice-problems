@@ -5,17 +5,7 @@
 var smallerNumbersThanCurrent = function (nums) {
   let arr = []
   for(let i = 0; i < nums.length; i++){
-    arr.push(nums.reduce((acc, current) => {
-      if(current < nums[i]){
-        return acc + 1
-      }
-      else{
-        return acc
-      }
-    }, 0))
+    arr.push(nums.reduce((acc, current) => current < nums[i] ? acc + 1 : acc, 0))
   }
   return arr;
 };
-
-
-      // return current < nums[i] ? acc + 1 : acc
